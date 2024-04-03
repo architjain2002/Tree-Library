@@ -1,16 +1,21 @@
 #include<iostream>
-#include "TreeNode.h"
+#include "BinaryTree.h"
+#include "BinaryTreeNode.h"
 using namespace std;
-
 
 int main() {
 
-	TreeNode<int> node;
-	std::cout << node.data;
+	BinaryTreeNode<int> node(5);
+	BinaryTree<int> tree;
+	tree.insert(2);
+	tree.insert(3);
+	tree.insert(node);
+	vector<int> arr = tree.inorder();
 
-	TreeNode<char> node2;
-	std::cout << node2.data;
-
+	for (int i = 0; i < arr.size(); i++)
+	{
+		cout << arr[i] << " ";
+	}
 
 	return 0;
 }

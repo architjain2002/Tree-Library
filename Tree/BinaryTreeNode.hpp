@@ -1,13 +1,14 @@
 template <typename T>
-TreeNode<T>::TreeNode() {
+BinaryTreeNode<T>::BinaryTreeNode() {
 	this->data = T();
 	this->left = nullptr;
 	this->right = nullptr;
 }
 
 template <typename T>
-TreeNode<T>::TreeNode(T data) {
+BinaryTreeNode<T>::BinaryTreeNode(T data) {
 	this->data = data;
 	this->left = nullptr;
 	this->right = nullptr;
 }
+

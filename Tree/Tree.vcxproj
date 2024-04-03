@@ -130,8 +130,10 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TreeNode.hpp" />
-    <ClInclude Include="TreeNode.h" />
+    <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="BinaryTree.hpp" />
+    <ClInclude Include="BinaryTreeNode.hpp" />
+    <ClInclude Include="BinaryTreeNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

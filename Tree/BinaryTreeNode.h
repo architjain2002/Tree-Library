@@ -1,20 +1,18 @@
 #pragma once
 
 template<typename T>
-
 // TreeNode class to define a binary tree
-class TreeNode {
+class BinaryTreeNode {
 public:
 	T data;
-	TreeNode* left;
-	TreeNode* right;
+	BinaryTreeNode* left;
+	BinaryTreeNode* right;
 
 	// default contructor with no arguments
-	TreeNode();
+	BinaryTreeNode();
 
 	// constructor when the data is passed to the treeNode
-	TreeNode(T data);
-
+	BinaryTreeNode(T data);
 };
 
-#include "TreeNode.hpp";
+#include "BinaryTreeNode.hpp"

@@ -20,10 +20,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TreeNode.h">
+    <ClInclude Include="BinaryTreeNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TreeNode.hpp">
+    <ClInclude Include="BinaryTreeNode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
