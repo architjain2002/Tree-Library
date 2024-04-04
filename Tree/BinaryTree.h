@@ -19,6 +19,10 @@ public:
 	// default constructor of the class
 	BinaryTree();
 
+	// printing the binary tree using operator overloading
+	template<typename U>
+	friend std::ostream& operator<< (std:: ostream& os, const BinaryTree<U>& tree);
+
 	// inserting a data into the tree
 	void insert(const T& data);
 

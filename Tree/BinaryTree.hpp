@@ -128,3 +128,43 @@ template<typename T>
 BinaryTreeNode<T>* BinaryTree<T>::find(const std::string &location) {
     return new BinaryTreeNode<T>(T());
 }
+
+template<typename T>    
+std::ostream& operator<<(std::ostream& os, const BinaryTree<T>& tree) {
+    std::queue<BinaryTreeNode<T>*>q;
+    q.push(tree.root);
+
+    while (!q.empty()) {
+        int size = q.size();
+
+        for (int i = 0; i < size; i++) {
+            BinaryTreeNode<T>* front = q.front();
+            q.pop();
+
+            if (front) {
+                os << front->data << " ";
+            }
+            else {
+                os << "null" << " ";
+                continue;
+            }
+            
+            if (front->left) {
+                q.push(front->left);
+            }
+            else if (front->left == nullptr && front) {
+                q.push(nullptr);
+            }
+            if (front->right) {
+                q.push(front->right);
+            }
+            else if(front->right == nullptr && front){
+                q.push(nullptr);
+            }
+        }
+        os << '\n';
+    }
+    
+    return os;
+}
+
