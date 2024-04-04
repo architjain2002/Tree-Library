@@ -135,7 +135,7 @@ std::ostream& operator<<(std::ostream& os, const BinaryTree<T>& tree) {
     q.push(tree.root);
 
     while (!q.empty()) {
-        int size = q.size();
+        size_t size = q.size();
 
         for (int i = 0; i < size; i++) {
             BinaryTreeNode<T>* front = q.front();
