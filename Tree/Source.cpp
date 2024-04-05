@@ -11,13 +11,14 @@ int main() {
 	tree.insert(3);
 	tree.insert(4);
 	tree.insert(node);
-	vector<int> arr = tree.inorder();
 
 	cout << tree;
-	for (int i = 0; i < arr.size(); i++)
-	{
-		cout << arr[i] << " ";
-	}
+	
+	vector<char> vec = {'a','b','c',BinaryTree<char>::null,'d'};
+
+	BinaryTree<char> tree2(vec);
+
+	cout << tree2;
 
 	return 0;
 }

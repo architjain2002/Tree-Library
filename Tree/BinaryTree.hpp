@@ -4,6 +4,47 @@ BinaryTree<T>::BinaryTree() {
 }
 
 template<typename T>
+BinaryTree<T>:: BinaryTree(const std::vector<T>& nodes) {
+    if (nodes.size() == 0) {
+        root = nullptr;
+    }
+    else {
+        if (nodes.size() == 1 && nodes[0] == BinaryTree<T>::null) {
+            root = nullptr;
+            return;
+        }
+        std::queue<BinaryTreeNode<T>*> q;
+
+        BinaryTreeNode<T>* head = new BinaryTreeNode<T>(nodes[0]);
+        this->root = head;
+
+        int i = 1;
+        size_t size = nodes.size();
+        q.push(head);
+
+        while(i<size && !q.empty()) {
+            BinaryTreeNode<T>* front = q.front();
+            q.pop();
+
+            if (i<size && nodes[i] != BinaryTree<T>::null) {
+                front->left = new BinaryTreeNode<T>(nodes[i]);
+                q.push(front->left);
+            }
+            i++;
+            if (i<size && nodes[i] != BinaryTree<T>::null) {
+                front->right = new BinaryTreeNode<T>(nodes[i]);
+                q.push(front->right);
+            }
+            i++;
+        }
+    }
+    return;
+}
+
+template<typename T>
+const T BinaryTree<T>::null = std::numeric_limits<T>::min();
+
+template<typename T>
 std::vector<T> BinaryTree<T>::preorder() {
     std::vector<T> result;
     preorderTraversal(root, result);
@@ -123,10 +164,15 @@ void BinaryTree<T>::insert(BinaryTreeNode<T> node) {
     return;
 }
 
-
 template<typename T>
 BinaryTreeNode<T>* BinaryTree<T>::find(const std::string &location) {
     return new BinaryTreeNode<T>(T());
+}
+
+template<typename T>
+void BinaryTree<T>::setRoot(BinaryTreeNode<T> root) {
+    this->root = &root;
+    return;
 }
 
 template<typename T>    
@@ -148,7 +194,7 @@ std::ostream& operator<<(std::ostream& os, const BinaryTree<T>& tree) {
                 os << "null" << " ";
                 continue;
             }
-            
+
             if (front->left) {
                 q.push(front->left);
             }
@@ -158,13 +204,12 @@ std::ostream& operator<<(std::ostream& os, const BinaryTree<T>& tree) {
             if (front->right) {
                 q.push(front->right);
             }
-            else if(front->right == nullptr && front){
+            else if (front->right == nullptr && front) {
                 q.push(nullptr);
             }
         }
         os << '\n';
     }
-    
     return os;
 }
 

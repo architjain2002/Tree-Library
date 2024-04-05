@@ -8,7 +8,7 @@ template<typename T>
 class BinaryTree {
 private:
 	BinaryTreeNode<T>* root;
-	
+
 	// preorder traversal implementation private
 	void preorderTraversal(BinaryTreeNode<T>* root, std::vector<T>& result);
 	// inorder traversal implementation private
@@ -16,8 +16,13 @@ private:
 	// postorder traversal implementation private
 	void postorderTraversal(BinaryTreeNode<T>* root, std::vector<T>& result);
 public:
+
+	static const T null;
 	// default constructor of the class
 	BinaryTree();
+
+	// overloaded constructor of the class to create the binary tree by taking in a vector
+	BinaryTree(const std::vector<T>& nodes);
 
 	// printing the binary tree using operator overloading
 	template<typename U>
@@ -28,6 +33,9 @@ public:
 
 	// inserting a custom node created using BinaryTreenode class into the tree
 	void insert(BinaryTreeNode<T> node);
+
+	// setting root to the custom created tree using BinaryTreeNode class
+	void setRoot(BinaryTreeNode<T> root);
 
 	// finding a node from the tree based on the position described in the string(location)
 	BinaryTreeNode<T>* find(const std::string &location);
