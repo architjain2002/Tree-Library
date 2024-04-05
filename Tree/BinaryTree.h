@@ -24,6 +24,10 @@ public:
 	// overloaded constructor of the class to create the binary tree by taking in a vector
 	BinaryTree(const std::vector<T>& nodes);
 
+	// overloaded constructor by using variadic templates to create the binary tree
+	template <typename... Args>
+	BinaryTree(Args&&... args);
+
 	// printing the binary tree using operator overloading
 	template<typename U>
 	friend std::ostream& operator<< (std:: ostream& os, const BinaryTree<U>& tree);

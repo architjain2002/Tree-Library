@@ -41,8 +41,52 @@ BinaryTree<T>:: BinaryTree(const std::vector<T>& nodes) {
     return;
 }
 
+template <typename T>
+template <typename... Args>
+BinaryTree<T>::BinaryTree(Args&&... args)
+{
+    std::vector<T> nodes = { std::forward<Args>(args)... };
+
+    if (nodes.size() == 0) {
+        root = nullptr;
+    }
+    else {
+        if (nodes.size() == 1 && nodes[0] == BinaryTree<T>::null) {
+            root = nullptr;
+            return;
+        }
+        std::queue<BinaryTreeNode<T>*> q;
+
+        BinaryTreeNode<T>* head = new BinaryTreeNode<T>(nodes[0]);
+        this->root = head;
+
+        int i = 1;
+        size_t size = nodes.size();
+        q.push(head);
+
+        while (i < size && !q.empty()) {
+            BinaryTreeNode<T>* front = q.front();
+            q.pop();
+
+            if (i < size && nodes[i] != BinaryTree<T>::null) {
+                front->left = new BinaryTreeNode<T>(nodes[i]);
+                q.push(front->left);
+            }
+            i++;
+            if (i < size && nodes[i] != BinaryTree<T>::null) {
+                front->right = new BinaryTreeNode<T>(nodes[i]);
+                q.push(front->right);
+            }
+            i++;
+        }
+    }
+    return;
+}
+
+
 template<typename T>
 const T BinaryTree<T>::null = std::numeric_limits<T>::min();
+
 
 template<typename T>
 std::vector<T> BinaryTree<T>::preorder() {
