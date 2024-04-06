@@ -46,13 +46,13 @@ template <typename... Args>
 BinaryTree<T>::BinaryTree(Args&&... args)
 {
     std::vector<T> nodes = { std::forward<Args>(args)... };
-
+        
     if (nodes.size() == 0) {
-        root = nullptr;
+        this->root = nullptr;
     }
     else {
         if (nodes.size() == 1 && nodes[0] == BinaryTree<T>::null) {
-            root = nullptr;
+            this->root = nullptr;
             return;
         }
         std::queue<BinaryTreeNode<T>*> q;
@@ -83,10 +83,49 @@ BinaryTree<T>::BinaryTree(Args&&... args)
     return;
 }
 
+template <typename T>
+BinaryTree<T>::BinaryTree(BinaryTree<T>& tree) : BinaryTree(const_cast<const BinaryTree<T>&>(tree)) {} // use of delegation constructor to call other constructor
+
+template <typename T>
+BinaryTree<T>::BinaryTree(const BinaryTree<T>& tree) {
+    if (tree.getRoot() == nullptr) {
+        this->root = nullptr;
+    }
+    else {
+        BinaryTreeNode<T>* root = tree.getRoot();
+        BinaryTreeNode<T>* tempRoot = new BinaryTreeNode<T>(root->data);
+
+        std::queue<std::pair<BinaryTreeNode<T>*,BinaryTreeNode<T>*>> q;
+        q.push({ root,tempRoot });
+
+        while (!q.empty()) {
+            std::pair <BinaryTreeNode<T>*, BinaryTreeNode<T>*> front = q.front();
+            q.pop();
+
+            if (front.first->left) {
+                front.second->left = new BinaryTreeNode<T>(front.first->left->data);
+                q.push({ front.first->left,front.second->left });
+            }
+
+            if (front.first->right) {
+                front.second->right = new BinaryTreeNode<T>(front.first->right->data);
+                q.push({ front.first->right,front.second->right });
+            }
+        }
+        this->root = tempRoot;
+    }
+    return;
+}
+
 
 template<typename T>
 const T BinaryTree<T>::null = std::numeric_limits<T>::min();
 
+template<typename T>
+BinaryTreeNode<T>* BinaryTree<T>::getRoot() const
+{
+    return this->root;
+}
 
 template<typename T>
 std::vector<T> BinaryTree<T>::preorder() {
@@ -256,4 +295,3 @@ std::ostream& operator<<(std::ostream& os, const BinaryTree<T>& tree) {
     }
     return os;
 }
-

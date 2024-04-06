@@ -28,9 +28,19 @@ public:
 	template <typename... Args>
 	BinaryTree(Args&&... args);
 
+	// copy constructor of the class, this internally will const_cast the tree object to const type and call the const copy constructor
+	BinaryTree(BinaryTree<T>& tree);
+
+	// copy constructor with const of the class
+	BinaryTree(const BinaryTree<T>& tree);
+
 	// printing the binary tree using operator overloading
 	template<typename U>
 	friend std::ostream& operator<< (std:: ostream& os, const BinaryTree<U>& tree);
+
+	// to access the root of the BinaryTree of the class
+	BinaryTreeNode<T>* getRoot() const;
+
 
 	// inserting a data into the tree
 	void insert(const T& data);
@@ -52,6 +62,8 @@ public:
 
 	// postorder traversal of the tree 
 	std::vector<T> postorder();
+
+	// delete node 
 };
 
 #include "BinaryTree.hpp"
