@@ -32,5 +32,8 @@ int main() {
 	cout << tree5;
 	cout << tree5.getRoot() << " " << tree.getRoot() << std::endl;
 
+	// move constructor this will make tree3->root = null and tree6->root = tree3->root
+	BinaryTree<int> tree6(std::move(tree3));
+	cout << tree6;
 	return 0;
 }

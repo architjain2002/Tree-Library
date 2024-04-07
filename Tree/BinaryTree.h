@@ -34,13 +34,18 @@ public:
 	// copy constructor with const of the class
 	BinaryTree(const BinaryTree<T>& tree);
 
+	// copy assignment operator of the class
+	void operator=(const BinaryTree<T>&);
+
+	// move constructor of the class
+	BinaryTree(BinaryTree<T>&& tree) noexcept;
+
 	// printing the binary tree using operator overloading
 	template<typename U>
 	friend std::ostream& operator<< (std:: ostream& os, const BinaryTree<U>& tree);
 
 	// to access the root of the BinaryTree of the class
 	BinaryTreeNode<T>* getRoot() const;
-
 
 	// inserting a data into the tree
 	void insert(const T& data);

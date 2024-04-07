@@ -46,7 +46,7 @@ template <typename... Args>
 BinaryTree<T>::BinaryTree(Args&&... args)
 {
     std::vector<T> nodes = { std::forward<Args>(args)... };
-        
+    
     if (nodes.size() == 0) {
         this->root = nullptr;
     }
@@ -117,6 +117,19 @@ BinaryTree<T>::BinaryTree(const BinaryTree<T>& tree) {
     return;
 }
 
+template<typename T>
+void BinaryTree<T>::operator=(const BinaryTree<T>& tree)
+{
+    this->root = tree.getRoot();
+    return;
+}
+
+template<typename T>
+BinaryTree<T>::BinaryTree(BinaryTree<T>&& tree) noexcept {
+    this->root = tree.getRoot();
+    tree.root = nullptr;
+    return;
+}
 
 template<typename T>
 const T BinaryTree<T>::null = std::numeric_limits<T>::min();
