@@ -68,7 +68,8 @@ public:
 	// postorder traversal of the tree 
 	std::vector<T> postorder();
 
-	// delete node 
+	// destructor
+	~BinaryTree();
 };
 
 #include "BinaryTree.hpp"

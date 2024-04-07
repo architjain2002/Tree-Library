@@ -12,3 +12,14 @@ BinaryTreeNode<T>::BinaryTreeNode(T data) {
 	this->right = nullptr;
 }
 
+template <typename T>
+BinaryTreeNode<T>:: ~BinaryTreeNode() {
+	if(left)
+		delete left;
+	if (right)
+		delete right;
+	left = right = nullptr;
+}
+
+
+

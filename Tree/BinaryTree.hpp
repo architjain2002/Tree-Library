@@ -120,7 +120,32 @@ BinaryTree<T>::BinaryTree(const BinaryTree<T>& tree) {
 template<typename T>
 void BinaryTree<T>::operator=(const BinaryTree<T>& tree)
 {
-    this->root = tree.getRoot();
+    if (tree.getRoot() == nullptr) {
+        this->root = nullptr;
+    }
+    else {
+        BinaryTreeNode<T>* root = tree.getRoot();
+        BinaryTreeNode<T>* tempRoot = new BinaryTreeNode<T>(root->data);
+
+        std::queue<std::pair<BinaryTreeNode<T>*, BinaryTreeNode<T>*>> q;
+        q.push({ root,tempRoot });
+
+        while (!q.empty()) {
+            std::pair <BinaryTreeNode<T>*, BinaryTreeNode<T>*> front = q.front();
+            q.pop();
+
+            if (front.first->left) {
+                front.second->left = new BinaryTreeNode<T>(front.first->left->data);
+                q.push({ front.first->left,front.second->left });
+            }
+
+            if (front.first->right) {
+                front.second->right = new BinaryTreeNode<T>(front.first->right->data);
+                q.push({ front.first->right,front.second->right });
+            }
+        }
+        this->root = tempRoot;
+    }
     return;
 }
 
@@ -307,4 +332,9 @@ std::ostream& operator<<(std::ostream& os, const BinaryTree<T>& tree) {
         os << '\n';
     }
     return os;
+}
+
+template<typename T>
+BinaryTree<T>:: ~BinaryTree() {
+    delete root;
 }

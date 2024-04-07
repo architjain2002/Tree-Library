@@ -13,6 +13,9 @@ public:
 
 	// constructor when the data is passed to the treeNode
 	BinaryTreeNode(T data);
+
+	// destructor for a particular node
+	~BinaryTreeNode();
 };
 
 #include "BinaryTreeNode.hpp"
