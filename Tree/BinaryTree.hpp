@@ -335,6 +335,26 @@ std::ostream& operator<<(std::ostream& os, const BinaryTree<T>& tree) {
 }
 
 template<typename T>
+int BinaryTree<T>:: size() {
+    return size(root);
+}
+
+template <typename T>
+int BinaryTree<T>::size(BinaryTreeNode<T>* node) {
+    if (node == nullptr) return 0;
+    else return size(node->left) + size(node->right) + 1;
+}
+
+template<typename T>
+bool BinaryTree<T>::empty() const {
+    if (this->root == nullptr) return true;
+    else return false;
+}
+
+
+template<typename T>
 BinaryTree<T>:: ~BinaryTree() {
     delete root;
 }
+
+

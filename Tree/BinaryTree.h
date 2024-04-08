@@ -15,6 +15,8 @@ private:
 	void inorderTraversal(BinaryTreeNode<T>* root, std::vector<T>& result);
 	// postorder traversal implementation private
 	void postorderTraversal(BinaryTreeNode<T>* root, std::vector<T>& result);
+	// size implementation private
+	int size(BinaryTreeNode<T>* node);
 public:
 
 	static const T null;
@@ -67,7 +69,13 @@ public:
 
 	// postorder traversal of the tree 
 	std::vector<T> postorder();
+	
+	// to check if the binary tree is empty
+	bool empty() const;
 
+	// to get size of the binary tree
+	int size();
+	
 	// destructor
 	~BinaryTree();
 };
