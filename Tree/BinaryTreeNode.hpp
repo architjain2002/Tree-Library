@@ -14,12 +14,11 @@ BinaryTreeNode<T>::BinaryTreeNode(T data) {
 
 template <typename T>
 BinaryTreeNode<T>:: ~BinaryTreeNode() {
-	if(left)
-		delete left;
-	if (right)
-		delete right;
+	if(left) delete left;
+	if(right) delete right;
 	left = right = nullptr;
 }
+
 
 
 

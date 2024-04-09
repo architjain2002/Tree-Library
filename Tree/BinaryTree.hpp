@@ -351,10 +351,37 @@ bool BinaryTree<T>::empty() const {
     else return false;
 }
 
+template<typename T>
+int BinaryTree<T>::height() {
+    return height(root);
+}
+
+template<typename T>
+int BinaryTree<T>::height(BinaryTreeNode<T>* node) {
+    if (node == nullptr) return 0;
+
+    int leftHeight = height(node->left);
+    int rightHeight = height(node->right);
+
+    return std::max(leftHeight, rightHeight) + 1;
+}
+
+template<typename T>
+void BinaryTree<T>::clear() {
+    clear(root);
+}
+
+template<typename T>
+void BinaryTree<T>::clear(BinaryTreeNode<T>* &node) {
+    if (node) {
+        clear(node->left);
+        clear(node->right);
+        delete node;
+        node = nullptr;
+    }
+}
 
 template<typename T>
 BinaryTree<T>:: ~BinaryTree() {
     delete root;
 }
-
-

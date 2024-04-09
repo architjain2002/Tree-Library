@@ -38,6 +38,10 @@ int main() {
 	cout << tree6;
 
 	BinaryTree<int> tree7;
-	cout << tree6.size();
+	cout << tree6.size() << " " << tree6.height() << endl;
+
+	tree5.clear();
+	cout << tree5;
+
 	return 0;
 }

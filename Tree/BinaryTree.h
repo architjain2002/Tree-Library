@@ -17,6 +17,10 @@ private:
 	void postorderTraversal(BinaryTreeNode<T>* root, std::vector<T>& result);
 	// size implementation private
 	int size(BinaryTreeNode<T>* node);
+	// height implementation private
+	int height(BinaryTreeNode<T>* node);
+	// clear implementation private
+	void clear(BinaryTreeNode<T>* &node);
 public:
 
 	static const T null;
@@ -76,6 +80,14 @@ public:
 	// to get size of the binary tree
 	int size();
 	
+	// height of the binary tree
+	int height();
+
+	// get ancestor of the binary tree
+
+	// clear binary tree
+	void clear();
+
 	// destructor
 	~BinaryTree();
 };
