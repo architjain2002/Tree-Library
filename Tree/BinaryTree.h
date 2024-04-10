@@ -21,6 +21,8 @@ private:
 	int height(BinaryTreeNode<T>* node);
 	// clear implementation private
 	void clear(BinaryTreeNode<T>* &node);
+	// equal implementation private
+	bool isEqual(BinaryTreeNode<T>* node1, BinaryTreeNode<T>* node2) const;
 public:
 
 	static const T null;
@@ -56,6 +58,12 @@ public:
 	// to access a node of the binary tree using []
 	BinaryTreeNode<T>* operator[] (size_t index);
 
+	// to check for equality of two trees
+	bool operator== (const BinaryTree<T> &tree);
+
+	// to check for equality of two trees
+	bool operator!= (const BinaryTree<T>& tree);
+
 	// inserting a data into the tree
 	void insert(const T& data);
 
@@ -86,7 +94,8 @@ public:
 	// height of the binary tree
 	int height();
 
-	// get ancestor of the binary tree
+	// get parent of the binary tree node
+	BinaryTreeNode<T>* getParent(BinaryTreeNode<T>* node);
 
 	// clear binary tree
 	void clear();

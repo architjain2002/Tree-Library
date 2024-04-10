@@ -363,6 +363,27 @@ std::ostream& operator<<(std::ostream& os, const BinaryTree<T>& tree) {
 }
 
 template<typename T>
+bool BinaryTree<T>::operator== (const BinaryTree<T> &tree) {
+    return isEqual(root, tree.root);
+}
+
+template<typename T>
+bool BinaryTree<T>::operator!= (const BinaryTree<T>& tree) {
+    return !isEqual(root, tree.root);
+}
+
+template<typename T>
+bool BinaryTree<T>::isEqual(BinaryTreeNode<T>* node1, BinaryTreeNode<T>* node2) const {
+    if (!node1 && !node2) return true;
+
+    if (!node1 || !node2) return false;
+
+    if (node1->data != node2->data) return false;
+
+    return isEqual(node1->left, node2->left) && isEqual(node1->right, node2->right);
+}
+
+template<typename T>
 int BinaryTree<T>:: size() {
     return size(root);
 }
@@ -410,8 +431,26 @@ void BinaryTree<T>::clear(BinaryTreeNode<T>* &node) {
 }
 
 template<typename T>
-void 
+BinaryTreeNode<T>* BinaryTree<T>::getParent(BinaryTreeNode<T>* node) {
+    if (root == nullptr && root == node) return nullptr;
 
+    std::queue<BinaryTreeNode<T>*> nodes;
+    nodes.push(root);
+
+    while (!nodes.empty()) {
+        BinaryTreeNode<T>* front = nodes.front();
+        nodes.pop();
+
+        if ((front->left && front->left == node) && (front->right && front->right == node)) {
+            return front;
+        }
+
+        if (front->left) nodes.push(front->left);
+        if (front->right) nodes.push(front->right);
+    }
+
+    return nullptr;
+}
 
 template<typename T>
 BinaryTree<T>:: ~BinaryTree() {

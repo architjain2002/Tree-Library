@@ -23,7 +23,6 @@ int main() {
 	cout << tree3;
 
 	// copy constructor called (deep copy takes place)
-
 	BinaryTree<int> tree4 = tree;
 	cout << tree4;
 	cout << tree4.getRoot() << " " << tree.getRoot() << std::endl;
@@ -45,7 +44,15 @@ int main() {
 
 	cout << tree6[3]->data;
 
+	if (tree4 == tree5) {
+		cout << "equal";
+	}
+	else cout << "unequal";
 
+	if (tree4 != tree5) {
+		cout << "unequal";
+	}
+	else cout << "equal";
 
 	return 0;
 }
