@@ -53,6 +53,9 @@ public:
 	// to access the root of the BinaryTree of the class
 	BinaryTreeNode<T>* getRoot() const;
 
+	// to access a node of the binary tree using []
+	BinaryTreeNode<T>* operator[] (size_t index);
+
 	// inserting a data into the tree
 	void insert(const T& data);
 

@@ -43,5 +43,9 @@ int main() {
 	tree5.clear();
 	cout << tree5;
 
+	cout << tree6[3]->data;
+
+
+
 	return 0;
 }

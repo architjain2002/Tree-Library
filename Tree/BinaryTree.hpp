@@ -166,6 +166,34 @@ BinaryTreeNode<T>* BinaryTree<T>::getRoot() const
 }
 
 template<typename T>
+BinaryTreeNode<T>* BinaryTree<T>:: operator[] (size_t index) {
+    if (root == nullptr) return nullptr;
+
+    std::queue<BinaryTreeNode<T>*> nodes;
+    nodes.push(root);
+
+    size_t currIndex = 0;
+    while (!nodes.empty()) {
+        BinaryTreeNode<T>* front = nodes.front();
+        nodes.pop();
+
+        if (currIndex == index) {
+            return front;
+        }
+
+        if (front->left) {
+            nodes.push(front->left);
+        }
+        if (front->right) {
+            nodes.push(front->right);
+        }
+        currIndex++;
+    }
+
+    return nullptr;
+}
+
+template<typename T>
 std::vector<T> BinaryTree<T>::preorder() {
     std::vector<T> result;
     preorderTraversal(root, result);
@@ -380,6 +408,10 @@ void BinaryTree<T>::clear(BinaryTreeNode<T>* &node) {
         node = nullptr;
     }
 }
+
+template<typename T>
+void 
+
 
 template<typename T>
 BinaryTree<T>:: ~BinaryTree() {
