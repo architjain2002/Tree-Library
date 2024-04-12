@@ -17,8 +17,10 @@ To get started with the BinaryTree library, follow these steps:
 1. **Clone the Repository**: Clone the BinaryTree repository to your local machine using Git:
 
     ```
-    git clone https://github.com/your-username/binarytree.git
+    git clone https://github.com/architjain2002/Tree-Library.git
     ```
+    You can go ahead and build the files and include the header files directly in your project.
+    You can also go ahead and download the static library in from the releases and include it in external libraries and use it accordingy.
 
 2. **Include Headers**: Include the necessary header files in your C++ project:
 
