@@ -28,7 +28,7 @@ int main() {
 	cout << tree4.getRoot() << " " << tree.getRoot() << std::endl;
 
 	BinaryTree<int> tree5;
-	tree5 = tree; // assignment operator is called and there is a shallow copy that happens to the member variables of the object
+	tree5 = tree; // assignment operator is called and there is a deep copy that happens to the member variables of the object
 	cout << tree5;
 	cout << tree5.getRoot() << " " << tree.getRoot() << std::endl;
 
