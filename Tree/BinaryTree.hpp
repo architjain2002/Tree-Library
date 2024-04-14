@@ -441,7 +441,7 @@ BinaryTreeNode<T>* BinaryTree<T>::getParent(BinaryTreeNode<T>* node) {
         BinaryTreeNode<T>* front = nodes.front();
         nodes.pop();
 
-        if ((front->left && front->left == node) && (front->right && front->right == node)) {
+        if ((front->left && front->left == node) || (front->right && front->right == node)) {
             return front;
         }
 
@@ -451,6 +451,7 @@ BinaryTreeNode<T>* BinaryTree<T>::getParent(BinaryTreeNode<T>* node) {
 
     return nullptr;
 }
+
 
 template<typename T>
 BinaryTree<T>:: ~BinaryTree() {

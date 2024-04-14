@@ -97,6 +97,9 @@ public:
 	// get parent of the binary tree node
 	BinaryTreeNode<T>* getParent(BinaryTreeNode<T>* node);
 
+	// get siblings of the binary tree node
+	std::vector<T> getSiblings(BinaryTreeNode<T>* node);
+
 	// clear binary tree
 	void clear();
 
